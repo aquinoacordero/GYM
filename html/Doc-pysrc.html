@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Doc</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;Doc
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Doc-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Doc-module.html">Module Doc</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gi</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">menu</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-name">gi</tt><tt class="py-op">.</tt><tt class="py-name">require_version</tt><tt class="py-op">(</tt><tt class="py-string">'Gtk'</tt><tt class="py-op">,</tt> <tt class="py-string">'3.0'</tt><tt class="py-op">)</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">gi</tt><tt class="py-op">.</tt><tt class="py-name">repository</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Gtk</tt><tt class="py-op">,</tt> <tt class="py-name">Gdk</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt><tt class="py-op">.</tt><tt class="py-name">styles</tt> <tt class="py-keyword">import</tt> <tt class="py-name">getSampleStyleSheet</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">platypus</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Paragraph</tt><tt class="py-op">,</tt> <tt class="py-name">Image</tt><tt class="py-op">,</tt> <tt class="py-name">SimpleDocTemplate</tt><tt class="py-op">,</tt> <tt class="py-name">Spacer</tt><tt class="py-op">,</tt> <tt class="py-name">Table</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt> <tt class="py-keyword">import</tt> <tt class="py-name">colors</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt><tt class="py-op">.</tt><tt class="py-name">pagesizes</tt> <tt class="py-keyword">import</tt> <tt class="py-name">A4</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-string">'forma xml de nuestra barra de tareas'</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable Doc.UI_INFO=Doc-module.html#UI_INFO"><a title="Doc.UI_INFO" class="py-name" href="#" onclick="return doclink('link-0', 'UI_INFO', 'link-0');">UI_INFO</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"""</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-string">&lt;ui&gt;</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-string">  &lt;menubar name='TestMenubar'&gt;</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-string">    &lt;menu action='FileMenu'&gt;</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-string">      &lt;menuitem action='MenuAction' /&gt;</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-string">    &lt;/menu&gt;</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-string">  &lt;/menubar&gt;</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-string">  &lt;toolbar name='TestToolbar'&gt;</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-string">    &lt;toolitem action='ToolbarAction' /&gt;</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-string">    &lt;toolitem action='FileBack' /&gt;</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-string">  &lt;/toolbar&gt;</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-string">&lt;/ui&gt;</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="MyWindow"></a><div id="MyWindow-def"><a name="L31"></a><tt class="py-lineno"> 31</tt> <a class="py-toggle" href="#" id="MyWindow-toggle" onclick="return toggle('MyWindow');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Doc.MyWindow-class.html">MyWindow</a><tt class="py-op">(</tt><tt class="py-base-class">Gtk</tt><tt class="py-op">.</tt><tt class="py-base-class">Window</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MyWindow-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MyWindow-expanded"><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-docstring">"""clase principal"""</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt id="link-1" class="py-name" targets="Variable Doc.MyWindow.label=Doc.MyWindow-class.html#label"><a title="Doc.MyWindow.label" class="py-name" href="#" onclick="return doclink('link-1', 'label', 'link-1');">label</a></tt> <tt class="py-op">=</tt> <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">Label</tt><tt class="py-op">(</tt><tt class="py-string">"CLIENTE"</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="MyWindow.__init__"></a><div id="MyWindow.__init__-def"><a name="L37"></a><tt class="py-lineno"> 37</tt> <a class="py-toggle" href="#" id="MyWindow.__init__-toggle" onclick="return toggle('MyWindow.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Doc.MyWindow-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">dni</tt><tt class="py-op">,</tt><tt class="py-param">nom</tt><tt class="py-op">,</tt><tt class="py-param">ape</tt><tt class="py-op">,</tt><tt class="py-param">cuot</tt><tt class="py-op">,</tt><tt class="py-param">ti</tt><tt class="py-op">,</tt><tt class="py-param">act</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MyWindow.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MyWindow.__init__-expanded"><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-docstring">"""metodo de inicio"""</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">Window</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method Doc.MyWindow.__init__()=Doc.MyWindow-class.html#__init__"><a title="Doc.MyWindow.__init__" class="py-name" href="#" onclick="return doclink('link-2', '__init__', 'link-2');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">title</tt><tt class="py-op">=</tt><tt class="py-string">"Test"</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">set_default_size</tt><tt class="py-op">(</tt><tt class="py-number">250</tt><tt class="py-op">,</tt> <tt class="py-number">250</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-name">action_group</tt> <tt class="py-op">=</tt> <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">ActionGroup</tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">"test_actions"</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method Doc.MyWindow.add_menu_action()=Doc.MyWindow-class.html#add_menu_action"><a title="Doc.MyWindow.add_menu_action" class="py-name" href="#" onclick="return doclink('link-3', 'add_menu_action', 'link-3');">add_menu_action</a></tt><tt class="py-op">(</tt><tt class="py-name">action_group</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method Doc.MyWindow.add_toolbar_action()=Doc.MyWindow-class.html#add_toolbar_action"><a title="Doc.MyWindow.add_toolbar_action" class="py-name" href="#" onclick="return doclink('link-4', 'add_toolbar_action', 'link-4');">add_toolbar_action</a></tt><tt class="py-op">(</tt><tt class="py-name">action_group</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-name">uimanager</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method Doc.MyWindow.create_ui_manager()=Doc.MyWindow-class.html#create_ui_manager"><a title="Doc.MyWindow.create_ui_manager" class="py-name" href="#" onclick="return doclink('link-5', 'create_ui_manager', 'link-5');">create_ui_manager</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-name">uimanager</tt><tt class="py-op">.</tt><tt class="py-name">insert_action_group</tt><tt class="py-op">(</tt><tt class="py-name">action_group</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">box</tt> <tt class="py-op">=</tt> <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">Box</tt><tt class="py-op">(</tt><tt class="py-name">orientation</tt><tt class="py-op">=</tt><tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">Orientation</tt><tt class="py-op">.</tt><tt class="py-name">VERTICAL</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">menubar</tt> <tt class="py-op">=</tt> <tt class="py-name">uimanager</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"/TestMenubar"</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">box</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt><tt class="py-name">menubar</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">toolbar</tt> <tt class="py-op">=</tt> <tt class="py-name">uimanager</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"/TestToolbar"</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">box</tt><tt class="py-op">.</tt><tt class="py-name">pack_start</tt><tt class="py-op">(</tt><tt class="py-name">toolbar</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">box</tt><tt class="py-op">.</tt><tt class="py-name">add</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="Doc.MyWindow.label" class="py-name" href="#" onclick="return doclink('link-6', 'label', 'link-1');">label</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">add</tt><tt class="py-op">(</tt><tt class="py-name">box</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dni</tt><tt class="py-op">=</tt><tt class="py-name">dni</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nom</tt><tt class="py-op">=</tt><tt class="py-name">nom</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ape</tt><tt class="py-op">=</tt><tt class="py-name">ape</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cuot</tt><tt class="py-op">=</tt><tt class="py-name">cuot</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ti</tt><tt class="py-op">=</tt><tt class="py-name">ti</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">act</tt><tt class="py-op">=</tt><tt class="py-name">act</tt> </tt>
+</div><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="MyWindow.add_menu_action"></a><div id="MyWindow.add_menu_action-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="MyWindow.add_menu_action-toggle" onclick="return toggle('MyWindow.add_menu_action');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Doc.MyWindow-class.html#add_menu_action">add_menu_action</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">action_group</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MyWindow.add_menu_action-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MyWindow.add_menu_action-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-docstring">"""Asocia una accion a cada componente de la barra de menu"""</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">action_filemenu</tt> <tt class="py-op">=</tt> <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">Action</tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">"FileMenu"</tt><tt class="py-op">,</tt> <tt id="link-7" class="py-name"><a title="Doc.MyWindow.label" class="py-name" href="#" onclick="return doclink('link-7', 'label', 'link-1');">label</a></tt><tt class="py-op">=</tt><tt class="py-string">"Generar"</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-name">action_group</tt><tt class="py-op">.</tt><tt class="py-name">add_action</tt><tt class="py-op">(</tt><tt class="py-name">action_filemenu</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-name">action</tt> <tt class="py-op">=</tt> <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">Action</tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'MenuAction'</tt><tt class="py-op">,</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                            <tt id="link-8" class="py-name"><a title="Doc.MyWindow.label" class="py-name" href="#" onclick="return doclink('link-8', 'label', 'link-1');">label</a></tt><tt class="py-op">=</tt><tt class="py-string">"Doc"</tt><tt class="py-op">,</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                            <tt class="py-name">stock_id</tt><tt class="py-op">=</tt><tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">STOCK_NEW</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">action</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">'activate'</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method Doc.MyWindow.on_menu_action()=Doc.MyWindow-class.html#on_menu_action"><a title="Doc.MyWindow.on_menu_action" class="py-name" href="#" onclick="return doclink('link-9', 'on_menu_action', 'link-9');">on_menu_action</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-name">action_group</tt><tt class="py-op">.</tt><tt class="py-name">add_action_with_accel</tt><tt class="py-op">(</tt><tt class="py-name">action</tt><tt class="py-op">,</tt> <tt class="py-string">'N'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="MyWindow.add_toolbar_action"></a><div id="MyWindow.add_toolbar_action-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="MyWindow.add_toolbar_action-toggle" onclick="return toggle('MyWindow.add_toolbar_action');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Doc.MyWindow-class.html#add_toolbar_action">add_toolbar_action</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">action_group</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MyWindow.add_toolbar_action-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MyWindow.add_toolbar_action-expanded"><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-docstring">"""Asocia una accion a cada componente de la barra de tareas"""</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-name">action</tt> <tt class="py-op">=</tt> <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">Action</tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'ToolbarAction'</tt><tt class="py-op">,</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">                            <tt id="link-10" class="py-name"><a title="Doc.MyWindow.label" class="py-name" href="#" onclick="return doclink('link-10', 'label', 'link-1');">label</a></tt><tt class="py-op">=</tt><tt class="py-string">"Press me"</tt><tt class="py-op">,</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                            <tt class="py-name">stock_id</tt><tt class="py-op">=</tt><tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">STOCK_FIND</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-name">action</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">'activate'</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method Doc.MyWindow.on_toolbar_action()=Doc.MyWindow-class.html#on_toolbar_action"><a title="Doc.MyWindow.on_toolbar_action" class="py-name" href="#" onclick="return doclink('link-11', 'on_toolbar_action', 'link-11');">on_toolbar_action</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">action_group</tt><tt class="py-op">.</tt><tt class="py-name">add_action_with_accel</tt><tt class="py-op">(</tt><tt class="py-name">action</tt><tt class="py-op">,</tt> <tt class="py-string">'X'</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-name">action</tt> <tt class="py-op">=</tt> <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">Action</tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">=</tt><tt class="py-string">'FileBack'</tt><tt class="py-op">,</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                            <tt id="link-12" class="py-name"><a title="Doc.MyWindow.label" class="py-name" href="#" onclick="return doclink('link-12', 'label', 'link-1');">label</a></tt><tt class="py-op">=</tt><tt class="py-string">"back"</tt><tt class="py-op">,</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                            <tt class="py-name">stock_id</tt><tt class="py-op">=</tt><tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">STOCK_GO_BACK</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name">action</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">'activate'</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method Doc.MyWindow.on_menu_back()=Doc.MyWindow-class.html#on_menu_back"><a title="Doc.MyWindow.on_menu_back" class="py-name" href="#" onclick="return doclink('link-13', 'on_menu_back', 'link-13');">on_menu_back</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name">action_group</tt><tt class="py-op">.</tt><tt class="py-name">add_action_with_accel</tt><tt class="py-op">(</tt><tt class="py-name">action</tt><tt class="py-op">,</tt> <tt class="py-string">'Z'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="MyWindow.on_menu_action"></a><div id="MyWindow.on_menu_action-def"><a name="L98"></a><tt class="py-lineno"> 98</tt> <a class="py-toggle" href="#" id="MyWindow.on_menu_action-toggle" onclick="return toggle('MyWindow.on_menu_action');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Doc.MyWindow-class.html#on_menu_action">on_menu_action</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">widget</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MyWindow.on_menu_action-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MyWindow.on_menu_action-expanded"><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-docstring">"""metodo que genera el pdf"""</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-comment">#cabecera</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-name">follaEstilo</tt><tt class="py-op">=</tt><tt class="py-name">getSampleStyleSheet</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">=</tt><tt class="py-name">follaEstilo</tt><tt class="py-op">[</tt><tt class="py-string">'Heading4'</tt><tt class="py-op">]</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">pageBreakBefore</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">KepWithNext</tt><tt class="py-op">=</tt><tt class="py-number">0</tt>  <tt class="py-comment">#Empezar pagina en blanco o no</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-name">cabecera</tt><tt class="py-op">.</tt><tt class="py-name">backColor</tt><tt class="py-op">=</tt><tt class="py-name">colors</tt><tt class="py-op">.</tt><tt class="py-name">red</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-name">parrafo</tt><tt class="py-op">=</tt><tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">"GYM python"</tt><tt class="py-op">,</tt> <tt class="py-name">cabecera</tt><tt class="py-op">)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo</tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">Spacer</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">20</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-comment">#cuerpo</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">estilo</tt><tt class="py-op">=</tt><tt class="py-name">follaEstilo</tt><tt class="py-op">[</tt><tt class="py-string">'BodyText'</tt><tt class="py-op">]</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-name">parrafo2</tt><tt class="py-op">=</tt><tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">"NOMBRE: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nom</tt><tt class="py-op">,</tt><tt class="py-name">estilo</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo2</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">Spacer</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">10</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-name">parrafo3</tt><tt class="py-op">=</tt><tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">"APELLIDOS: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ape</tt><tt class="py-op">,</tt><tt class="py-name">estilo</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo3</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">Spacer</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">10</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-name">parrafo4</tt><tt class="py-op">=</tt><tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">"TIEMPO: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ti</tt><tt class="py-op">,</tt><tt class="py-name">estilo</tt><tt class="py-op">)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo4</tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">Spacer</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">10</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-name">parrafo5</tt><tt class="py-op">=</tt><tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">"ACTIVIDADES: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">act</tt><tt class="py-op">,</tt><tt class="py-name">estilo</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo5</tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">Spacer</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">10</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt class="py-name">parrafo6</tt><tt class="py-op">=</tt><tt class="py-name">Paragraph</tt><tt class="py-op">(</tt><tt class="py-string">"Total a pagar: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cuot</tt><tt class="py-op">,</tt><tt class="py-name">estilo</tt><tt class="py-op">)</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">parrafo6</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">Spacer</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">10</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-comment">#imagen</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">        <tt class="py-name">imagen</tt><tt class="py-op">=</tt><tt class="py-string">"./imagenes/gym.jpg"</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-name">imagen_logo</tt><tt class="py-op">=</tt><tt class="py-name">Image</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">realpath</tt><tt class="py-op">(</tt><tt class="py-name">imagen</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">width</tt><tt class="py-op">=</tt><tt class="py-number">100</tt><tt class="py-op">,</tt><tt class="py-name">height</tt><tt class="py-op">=</tt><tt class="py-number">50</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-name">guion</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">imagen_logo</tt><tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-name">SimpleDocTemplate</tt><tt class="py-op">(</tt><tt class="py-string">"Documentacion.pdf"</tt><tt class="py-op">,</tt> <tt class="py-name">pagesize</tt><tt class="py-op">=</tt><tt class="py-name">A4</tt><tt class="py-op">,</tt> <tt class="py-name">showBoundary</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-name">doc</tt><tt class="py-op">.</tt><tt class="py-name">build</tt><tt class="py-op">(</tt><tt class="py-name">guion</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"> </tt>
+<a name="MyWindow.on_toolbar_action"></a><div id="MyWindow.on_toolbar_action-def"><a name="L146"></a><tt class="py-lineno">146</tt> <a class="py-toggle" href="#" id="MyWindow.on_toolbar_action-toggle" onclick="return toggle('MyWindow.on_toolbar_action');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Doc.MyWindow-class.html#on_toolbar_action">on_toolbar_action</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">widget</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MyWindow.on_toolbar_action-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MyWindow.on_toolbar_action-expanded"><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-docstring">"""Muestra los datos del cliente para el que se va agenerar el pdf"""</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt><tt class="py-op">(</tt><tt class="py-string">"DNI: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dni</tt><tt class="py-op">+</tt><tt class="py-string">"NOMBRE: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nom</tt><tt class="py-op">+</tt><tt class="py-string">"APELLIDOS: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ape</tt><tt class="py-op">)</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="Doc.MyWindow.label" class="py-name" href="#" onclick="return doclink('link-14', 'label', 'link-1');">label</a></tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"DNI: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dni</tt><tt class="py-op">+</tt><tt class="py-string">"\n"</tt><tt class="py-op">+</tt><tt class="py-string">"NOMBRE: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nom</tt><tt class="py-op">+</tt><tt class="py-string">"\n"</tt><tt class="py-op">+</tt><tt class="py-string">"APELLIDOS: "</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ape</tt><tt class="py-op">)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-string">'= Gtk.Label("DNI: "+self.dni+"\n"+"NOMBRE: "+self.nom+"\n"+"APELLIDOS: "+self.ape)'</tt> </tt>
+</div><a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"> </tt>
+<a name="MyWindow.on_menu_back"></a><div id="MyWindow.on_menu_back-def"><a name="L153"></a><tt class="py-lineno">153</tt> <a class="py-toggle" href="#" id="MyWindow.on_menu_back-toggle" onclick="return toggle('MyWindow.on_menu_back');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Doc.MyWindow-class.html#on_menu_back">on_menu_back</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">widget</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MyWindow.on_menu_back-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MyWindow.on_menu_back-expanded"><a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt class="py-docstring">"""regrea a la ventana de inicio"""</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">        <tt class="py-name">menu</tt><tt class="py-op">.</tt><tt class="py-name">principal</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="MyWindow.create_ui_manager"></a><div id="MyWindow.create_ui_manager-def"><a name="L158"></a><tt class="py-lineno">158</tt> <a class="py-toggle" href="#" id="MyWindow.create_ui_manager-toggle" onclick="return toggle('MyWindow.create_ui_manager');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Doc.MyWindow-class.html#create_ui_manager">create_ui_manager</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MyWindow.create_ui_manager-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MyWindow.create_ui_manager-expanded"><a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">        <tt class="py-name">uimanager</tt> <tt class="py-op">=</tt> <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">UIManager</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-name">uimanager</tt><tt class="py-op">.</tt><tt class="py-name">add_ui_from_string</tt><tt class="py-op">(</tt><tt id="link-15" class="py-name"><a title="Doc.UI_INFO" class="py-name" href="#" onclick="return doclink('link-15', 'UI_INFO', 'link-0');">UI_INFO</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">add_accel_group</tt><tt class="py-op">(</tt><tt class="py-name">uimanager</tt><tt class="py-op">.</tt><tt class="py-name">get_accel_group</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">uimanager</tt> </tt>
+</div></div><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"> </tt>
+<a name="tool"></a><div id="tool-def"><a name="L167"></a><tt class="py-lineno">167</tt> <a class="py-toggle" href="#" id="tool-toggle" onclick="return toggle('tool');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="Doc-module.html#tool">tool</a><tt class="py-op">(</tt><tt class="py-param">dni</tt><tt class="py-op">,</tt><tt class="py-param">nom</tt><tt class="py-op">,</tt><tt class="py-param">ape</tt><tt class="py-op">,</tt><tt class="py-param">cuot</tt><tt class="py-op">,</tt><tt class="py-param">ti</tt><tt class="py-op">,</tt><tt class="py-param">act</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="tool-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="tool-expanded"><a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">    <tt class="py-name">window</tt> <tt class="py-op">=</tt> <tt id="link-16" class="py-name" targets="Class Doc.MyWindow=Doc.MyWindow-class.html"><a title="Doc.MyWindow" class="py-name" href="#" onclick="return doclink('link-16', 'MyWindow', 'link-16');">MyWindow</a></tt><tt class="py-op">(</tt><tt class="py-name">dni</tt><tt class="py-op">,</tt><tt class="py-name">nom</tt><tt class="py-op">,</tt><tt class="py-name">ape</tt><tt class="py-op">,</tt><tt class="py-name">cuot</tt><tt class="py-op">,</tt><tt class="py-name">ti</tt><tt class="py-op">,</tt><tt class="py-name">act</tt><tt class="py-op">)</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">    <tt class="py-name">window</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">"delete-event"</tt><tt class="py-op">,</tt> <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">main_quit</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">    <tt class="py-name">window</tt><tt class="py-op">.</tt><tt class="py-name">show_all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">main</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Tue Apr  5 07:46:37 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

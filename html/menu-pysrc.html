@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>menu</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;menu
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="menu-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="menu-module.html">Module menu</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">BD</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">add</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">adv</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">Doc</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">borrar</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">gi</tt><tt class="py-op">.</tt><tt class="py-name">repository</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Gtk</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="principal"></a><div id="principal-def"><a name="L13"></a><tt class="py-lineno">13</tt> <a class="py-toggle" href="#" id="principal-toggle" onclick="return toggle('principal');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="menu.principal-class.html">principal</a><tt class="py-op">:</tt> </tt>
+</div><div id="principal-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="principal-expanded"><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-docstring">"""creamos el constructor"""</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt id="link-0" class="py-name" targets="Variable menu.principal.builder=menu.principal-class.html#builder"><a title="menu.principal.builder" class="py-name" href="#" onclick="return doclink('link-0', 'builder', 'link-0');">builder</a></tt> <tt class="py-op">=</tt> <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">Builder</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-comment">#asignamos el archivo glade al constructor</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt id="link-1" class="py-name"><a title="menu.principal.builder" class="py-name" href="#" onclick="return doclink('link-1', 'builder', 'link-0');">builder</a></tt><tt class="py-op">.</tt><tt class="py-name">add_from_file</tt><tt class="py-op">(</tt><tt class="py-string">"menu.glade"</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-comment">#cargamos la ventana del archivo glade</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Variable menu.principal.win=menu.principal-class.html#win"><a title="menu.principal.win" class="py-name" href="#" onclick="return doclink('link-2', 'win', 'link-2');">win</a></tt> <tt class="py-op">=</tt> <tt id="link-3" class="py-name"><a title="menu.principal.builder" class="py-name" href="#" onclick="return doclink('link-3', 'builder', 'link-0');">builder</a></tt><tt class="py-op">.</tt><tt class="py-name">get_object</tt><tt class="py-op">(</tt><tt class="py-string">"window1"</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt class="py-comment">#declaramos los objetos del archivo glade en variable</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable menu.principal.nombre=menu.principal-class.html#nombre"><a title="menu.principal.nombre" class="py-name" href="#" onclick="return doclink('link-4', 'nombre', 'link-4');">nombre</a></tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="menu.principal.builder" class="py-name" href="#" onclick="return doclink('link-5', 'builder', 'link-0');">builder</a></tt><tt class="py-op">.</tt><tt class="py-name">get_object</tt><tt class="py-op">(</tt><tt class="py-string">"entryName"</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">    <tt id="link-6" class="py-name" targets="Variable menu.principal.apellido=menu.principal-class.html#apellido"><a title="menu.principal.apellido" class="py-name" href="#" onclick="return doclink('link-6', 'apellido', 'link-6');">apellido</a></tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="menu.principal.builder" class="py-name" href="#" onclick="return doclink('link-7', 'builder', 'link-0');">builder</a></tt><tt class="py-op">.</tt><tt class="py-name">get_object</tt><tt class="py-op">(</tt><tt class="py-string">"entryLast"</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt id="link-8" class="py-name" targets="Variable menu.principal.dni=menu.principal-class.html#dni"><a title="menu.principal.dni" class="py-name" href="#" onclick="return doclink('link-8', 'dni', 'link-8');">dni</a></tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name"><a title="menu.principal.builder" class="py-name" href="#" onclick="return doclink('link-9', 'builder', 'link-0');">builder</a></tt><tt class="py-op">.</tt><tt class="py-name">get_object</tt><tt class="py-op">(</tt><tt class="py-string">"entryDNI"</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-comment">#metodo principal</tt> </tt>
+<a name="principal.__init__"></a><div id="principal.__init__-def"><a name="L26"></a><tt class="py-lineno">26</tt> <a class="py-toggle" href="#" id="principal.__init__-toggle" onclick="return toggle('principal.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="menu.principal-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="principal.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="principal.__init__-expanded"><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-docstring">"""metodo inicial"""</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-comment">#se&#241;ales que enlazan as acciones creadas en glade con metodos de la clase</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-name">signals</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> <tt class="py-string">"onButtonPressedAdd"</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method menu.principal.onButtonPressedAdd()=menu.principal-class.html#onButtonPressedAdd"><a title="menu.principal.onButtonPressedAdd" class="py-name" href="#" onclick="return doclink('link-10', 'onButtonPressedAdd', 'link-10');">onButtonPressedAdd</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">                    <tt class="py-string">"onButtonPressedSearch"</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method menu.principal.onButtonPressedSearch()=menu.principal-class.html#onButtonPressedSearch"><a title="menu.principal.onButtonPressedSearch" class="py-name" href="#" onclick="return doclink('link-11', 'onButtonPressedSearch', 'link-11');">onButtonPressedSearch</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">                    <tt class="py-string">"onButtonPressedDelete"</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method menu.principal.onButtonPressedDelete()=menu.principal-class.html#onButtonPressedDelete"><a title="menu.principal.onButtonPressedDelete" class="py-name" href="#" onclick="return doclink('link-12', 'onButtonPressedDelete', 'link-12');">onButtonPressedDelete</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">                    <tt class="py-string">"onButtonShow"</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method menu.principal.onButtonShow()=menu.principal-class.html#onButtonShow"><a title="menu.principal.onButtonShow" class="py-name" href="#" onclick="return doclink('link-13', 'onButtonShow', 'link-13');">onButtonShow</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">                    <tt class="py-string">"onButtonDoc"</tt><tt class="py-op">:</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method menu.principal.onButtonDoc()=menu.principal-class.html#onButtonDoc"><a title="menu.principal.onButtonDoc" class="py-name" href="#" onclick="return doclink('link-14', 'onButtonDoc', 'link-14');">onButtonDoc</a></tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">                    <tt class="py-op">}</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-comment">#asignamos al constructor las se&#241;ales</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="menu.principal.builder" class="py-name" href="#" onclick="return doclink('link-15', 'builder', 'link-0');">builder</a></tt><tt class="py-op">.</tt><tt class="py-name">connect_signals</tt><tt class="py-op">(</tt><tt class="py-name">signals</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-comment">#mostramos contenido</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="menu.principal.win" class="py-name" href="#" onclick="return doclink('link-16', 'win', 'link-2');">win</a></tt><tt class="py-op">.</tt><tt class="py-name">show_all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-comment">#cargamos la base de datos</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name">BD</tt><tt class="py-op">.</tt><tt class="py-name">BD</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"> </tt>
+<a name="principal.onButtonPressedAdd"></a><div id="principal.onButtonPressedAdd-def"><a name="L42"></a><tt class="py-lineno">42</tt> <a class="py-toggle" href="#" id="principal.onButtonPressedAdd-toggle" onclick="return toggle('principal.onButtonPressedAdd');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="menu.principal-class.html#onButtonPressedAdd">onButtonPressedAdd</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="principal.onButtonPressedAdd-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="principal.onButtonPressedAdd-expanded"><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-docstring">"""metodo para anhadir"""</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-op">(</tt><tt class="py-string">"A&#241;adiendo"</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="menu.principal.nombre" class="py-name" href="#" onclick="return doclink('link-17', 'nombre', 'link-4');">nombre</a></tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="menu.principal.apellido" class="py-name" href="#" onclick="return doclink('link-18', 'apellido', 'link-6');">apellido</a></tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="menu.principal.dni" class="py-name" href="#" onclick="return doclink('link-19', 'dni', 'link-8');">dni</a></tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-comment">#variables que recogen el texto que pasa por los objetos de clase</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name">nom</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="menu.principal.nombre" class="py-name" href="#" onclick="return doclink('link-20', 'nombre', 'link-4');">nombre</a></tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-name">ape</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="menu.principal.apellido" class="py-name" href="#" onclick="return doclink('link-21', 'apellido', 'link-6');">apellido</a></tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-name">dni_</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="menu.principal.dni" class="py-name" href="#" onclick="return doclink('link-22', 'dni', 'link-8');">dni</a></tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="menu.principal.win" class="py-name" href="#" onclick="return doclink('link-23', 'win', 'link-2');">win</a></tt><tt class="py-op">.</tt><tt class="py-name">hide</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-comment">#llamamos a la clase abonado</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-name">add</tt><tt class="py-op">.</tt><tt class="py-name">abonado</tt><tt class="py-op">(</tt><tt class="py-name">nom</tt><tt class="py-op">,</tt><tt class="py-name">ape</tt><tt class="py-op">,</tt><tt class="py-name">dni_</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"> </tt>
+<a name="principal.onButtonPressedSearch"></a><div id="principal.onButtonPressedSearch-def"><a name="L54"></a><tt class="py-lineno">54</tt> <a class="py-toggle" href="#" id="principal.onButtonPressedSearch-toggle" onclick="return toggle('principal.onButtonPressedSearch');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="menu.principal-class.html#onButtonPressedSearch">onButtonPressedSearch</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="principal.onButtonPressedSearch-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="principal.onButtonPressedSearch-expanded"><a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt class="py-docstring">"""metodo buscar"""</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-op">(</tt><tt class="py-string">"Buscando"</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt class="py-name">dni_</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="menu.principal.dni" class="py-name" href="#" onclick="return doclink('link-24', 'dni', 'link-8');">dni</a></tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">dni_</tt><tt class="py-op">==</tt><tt class="py-string">""</tt><tt class="py-op">:</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt><tt class="py-op">(</tt><tt class="py-string">"Se requiere de un DNI"</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">            <tt class="py-name">adv</tt><tt class="py-op">.</tt><tt class="py-name">adv</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-comment">#muestra solicitando datos</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="menu.principal.win" class="py-name" href="#" onclick="return doclink('link-25', 'win', 'link-2');">win</a></tt><tt class="py-op">.</tt><tt class="py-name">hide</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">            <tt class="py-comment">#llamamos a la clase base de datos al metodo buscar</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">            <tt class="py-name">BD</tt><tt class="py-op">.</tt><tt class="py-name">BD</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">buscar</tt><tt class="py-op">(</tt><tt class="py-name">dni_</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"> </tt>
+<a name="principal.onButtonPressedDelete"></a><div id="principal.onButtonPressedDelete-def"><a name="L67"></a><tt class="py-lineno">67</tt> <a class="py-toggle" href="#" id="principal.onButtonPressedDelete-toggle" onclick="return toggle('principal.onButtonPressedDelete');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="menu.principal-class.html#onButtonPressedDelete">onButtonPressedDelete</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="principal.onButtonPressedDelete-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="principal.onButtonPressedDelete-expanded"><a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-docstring">"""metodo borrar"""</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-op">(</tt><tt class="py-string">"Borrando"</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">        <tt class="py-comment">#variables que recogen el texto que pasa por los objetos de clase</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">        <tt class="py-name">dni_</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="menu.principal.dni" class="py-name" href="#" onclick="return doclink('link-26', 'dni', 'link-8');">dni</a></tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">        <tt class="py-comment">#comprobamos si hay los parametros necesarios</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">dni_</tt><tt class="py-op">==</tt><tt class="py-string">""</tt><tt class="py-op">:</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt><tt class="py-op">(</tt><tt class="py-string">"DATOS NECESARIOS"</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">            <tt class="py-name">adv</tt><tt class="py-op">.</tt><tt class="py-name">adv</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">             <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="menu.principal.win" class="py-name" href="#" onclick="return doclink('link-27', 'win', 'link-2');">win</a></tt><tt class="py-op">.</tt><tt class="py-name">hide</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">             <tt class="py-name">BD</tt><tt class="py-op">.</tt><tt class="py-name">BD</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">buscar</tt><tt class="py-op">(</tt><tt class="py-name">dni_</tt><tt class="py-op">,</tt><tt class="py-number">2</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line"> </tt>
+<a name="principal.onButtonShow"></a><div id="principal.onButtonShow-def"><a name="L80"></a><tt class="py-lineno">80</tt> <a class="py-toggle" href="#" id="principal.onButtonShow-toggle" onclick="return toggle('principal.onButtonShow');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="menu.principal-class.html#onButtonShow">onButtonShow</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="principal.onButtonShow-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="principal.onButtonShow-expanded"><a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">        <tt class="py-docstring">"""metodo mostrar"""</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt><tt class="py-op">(</tt><tt class="py-string">"Mostrar"</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="menu.principal.win" class="py-name" href="#" onclick="return doclink('link-28', 'win', 'link-2');">win</a></tt><tt class="py-op">.</tt><tt class="py-name">hide</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line">        <tt class="py-name">BD</tt><tt class="py-op">.</tt><tt class="py-name">BD</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">mostrar</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line"> </tt>
+<a name="principal.onButtonDoc"></a><div id="principal.onButtonDoc-def"><a name="L86"></a><tt class="py-lineno">86</tt> <a class="py-toggle" href="#" id="principal.onButtonDoc-toggle" onclick="return toggle('principal.onButtonDoc');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="menu.principal-class.html#onButtonDoc">onButtonDoc</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="principal.onButtonDoc-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="principal.onButtonDoc-expanded"><a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="menu.principal.win" class="py-name" href="#" onclick="return doclink('link-29', 'win', 'link-2');">win</a></tt><tt class="py-op">.</tt><tt class="py-name">hide</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line">        <tt class="py-name">dni_</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="menu.principal.dni" class="py-name" href="#" onclick="return doclink('link-30', 'dni', 'link-8');">dni</a></tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line">        <tt class="py-name">BD</tt><tt class="py-op">.</tt><tt class="py-name">BD</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">buscar</tt><tt class="py-op">(</tt><tt class="py-name">dni_</tt><tt class="py-op">,</tt><tt class="py-number">3</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line"><tt class="py-comment">#llamada al metodo principal</tt> </tt>
+<a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt><tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L92"></a><tt class="py-lineno">92</tt>  <tt class="py-line">    <tt id="link-31" class="py-name" targets="Class menu.principal=menu.principal-class.html"><a title="menu.principal" class="py-name" href="#" onclick="return doclink('link-31', 'principal', 'link-31');">principal</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno">93</tt>  <tt class="py-line">    <tt class="py-name">Gtk</tt><tt class="py-op">.</tt><tt class="py-name">main</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno">94</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Tue Apr  5 07:50:18 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
