@@ -140,7 +140,8 @@ class MyWindow(Gtk.Window,):
         imagen_logo=Image(os.path.realpath(imagen),width=100,height=50)
         guion.append(imagen_logo)
 
-        doc=SimpleDocTemplate("Documentacion.pdf", pagesize=A4, showBoundary=1)
+        nomdoc=self.dni
+        doc=SimpleDocTemplate(nomdoc+".pdf", pagesize=A4, showBoundary=1)
         doc.build(guion)
 
     def on_toolbar_action(self, widget):

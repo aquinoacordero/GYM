@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import easygui as easygui
 
 import menu
 import BD
@@ -75,7 +76,10 @@ class abonado:
         cuot_=str(cuot)
         print(nom,ape,dni_,ti,cuot_,act)
         #Llama a la base de datos pasando los parametros a ingresar
-        BD.BD().insertar(nom,ape,dni_,cuot_,ti,act)
+        if dni_=="" or nom=="" or ape=="":
+            easygui.msgbox("Faltan datos", title="ERROR")
+        else:
+            BD.BD().insertar(nom,ape,dni_,cuot_,ti,act)
 
     #metodos que cargan las actividades
     def activeSpa(self, *args):

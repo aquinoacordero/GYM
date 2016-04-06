@@ -35,10 +35,8 @@ class eliminar:
         """metodo para borrar una fila de la base de datos"""
         print ("Borrado")
         self.win.hide()
-        #nom y ape recogen el texto de nombre y apellido respectivamente
-        nom=self.nombre.get_text()
-        ape=self.apellido.get_text()
         dni_=self.dni.get_text()
+        print(dni_)
         #se llama al metodo borrar de la base de datos pasandole nom y ape
         BD.BD().borrar(dni_)
         menu.principal()
